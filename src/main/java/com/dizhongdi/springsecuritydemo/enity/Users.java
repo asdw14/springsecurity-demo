@@ -1,5 +1,6 @@
 package com.dizhongdi.springsecuritydemo.enity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -11,6 +12,7 @@ import lombok.Data;
  * @Author:dizhongdi
  */
 @Data
+@AllArgsConstructor
 public class Users {
     private Integer id;
     private String username;
