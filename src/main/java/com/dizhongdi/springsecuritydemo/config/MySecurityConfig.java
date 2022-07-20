@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 /**
  * ClassName:SecurityConfig
@@ -23,6 +24,8 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserDetailsService userDetailsService;
+    @Autowired
+    private PersistentTokenRepository tokenRepository;
 
     // 注入 PasswordEncoder 类到 spring 容器中
     @Bean
@@ -41,6 +44,11 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         http.exceptionHandling().accessDeniedPage("/unauth");
         //退出
         http.logout().logoutUrl("/logout").logoutSuccessUrl("/index").permitAll();
+        // 开启记住我功能
+        http.rememberMe()
+                .tokenRepository(tokenRepository)
+                .userDetailsService(userDetailsService)
+                .tokenValiditySeconds(600);    //有效期单位秒
 
         // 配置认证
         http.formLogin()
@@ -58,6 +66,6 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest() // 其他请求
                 .authenticated(); //需要认证
 // 关闭 csrf
-        http.csrf().disable();
+//        http.csrf().disable();
     }
 }
