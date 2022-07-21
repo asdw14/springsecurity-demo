@@ -13,11 +13,11 @@ class SpringsecurityDemoApplicationTests {
         BCryptPasswordEncoder bCryptPasswordEncoder = new
                 BCryptPasswordEncoder();
     // 对密码进行加密
-        String atguigu = bCryptPasswordEncoder.encode("dizhongdi");
+        String dizhongdi = bCryptPasswordEncoder.encode("dizhongdi");
     // 打印加密之后的数据
-        System.out.println("加密之后数据：\t"+atguigu);
+        System.out.println("加密之后数据：\t"+dizhongdi);
     //判断原字符加密后和加密之前是否匹配
-        boolean result = bCryptPasswordEncoder.matches("dizhongdi", atguigu);
+        boolean result = bCryptPasswordEncoder.matches("dizhongdi", dizhongdi);
     // 打印比较结果
         System.out.println("比较结果：\t"+result);
     }
