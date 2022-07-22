@@ -3,7 +3,7 @@ package com.dizhongdi.aclservice.controller;
 
 import com.dizhongdi.aclservice.entity.Permission;
 import com.dizhongdi.aclservice.service.PermissionService;
-import com.dizhongdi.utils.utils.*;
+import com.dizhongdi.servicebase.utils.utils.R;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
